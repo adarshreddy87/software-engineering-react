@@ -42,6 +42,8 @@ function Tuiter () {
               <Route path="/profile/edit" element={<EditProfile/>}/>
               <Route path="/more" element={<More/>}/>
               <Route path="/tuit/:tid" element={<TuitScreen/>}/>
+              <Route path="/profile/mytuits" element={<MyTuits/>}/>
+              <Route path="/profile/mylikes" element={<MyLikes/>}/>
             </Routes>
           </div>
           <div className="ttr-right-column">
