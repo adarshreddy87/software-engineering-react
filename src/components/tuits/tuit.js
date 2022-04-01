@@ -5,6 +5,7 @@ import TuitVideo from "./tuit-video";
 import {useNavigate} from "react-router-dom";
 import * as likesService from '../../services/likes-service'
 import * as dislikesService from '../../services/dislikes-service'
+import {useEffect, useState} from "react/cjs/react.production.min";
 
 const Tuit = ({tuit, deleteTuit, likeTuit, dislikeTuit}) => {
     const navigate = useNavigate();
