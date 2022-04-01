@@ -2,13 +2,18 @@ import React from "react";
 import './tuits.css';
 import Tuit from "./tuit";
 import * as likesService from "../../services/likes-service";
+import * as dislikesService from '../../services/dislikes-service'
 import * as service from "../../services/tuits-service";
 const Tuits = ({tuits = [], deleteTuit, refreshTuits}) => {
     const likeTuit = (tuit) =>
         likesService
             .userTogglesTuitLikes("me", tuit._id)
             .then(refreshTuits)
-            .catch(e => alert(e))
+            .catch(e => alert(e));
+    const dislikeTuit = (tuit) =>
+        dislikesService.userTogglesDislikeTuit("me", tuit._id)
+            .then(refreshTuits)
+            .catch(e => alert(e));
 
     return (
         <div>
@@ -18,6 +23,7 @@ const Tuits = ({tuits = [], deleteTuit, refreshTuits}) => {
                                   <Tuit key={tuit._id}
                                         deleteTuit={deleteTuit}
                                         likeTuit={likeTuit}
+                                        dislikeTuit={dislikeTuit}
                                         tuit={tuit}/>)
                 }
             </ul>
