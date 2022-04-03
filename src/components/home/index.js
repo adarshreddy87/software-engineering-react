@@ -10,32 +10,21 @@ const Home = () => {
   const [tuits, setTuits] = useState([]);
   const [tuit, setTuit] = useState('');
   const userId = uid;
-  const findTuits = () => {
-    if(uid) {
-      return service.findTuitByUser(uid)
-          .then(tuits => setTuits(tuits))
-    } else {
-      return service.findAllTuits()
-          .then(tuits => setTuits(tuits))
-    }
-  }
+  const findTuits = () =>
+      service.findAllTuits()
+          .then(tuits => setTuits(tuits));
   useEffect(() => {
     let isMounted = true;
     findTuits()
     return () => {isMounted = false;}
   }, []);
   const createTuit = () =>
-      service.createTuit(userId, {tuit})
-          .then(findTuits)
-  const deleteTuit = (tid) =>
-      service.deleteTuit(tid)
+      service.createTuit('my', {tuit})
           .then(findTuits)
   return(
     <div className="ttr-home">
       <div className="border border-bottom-0">
         <h4 className="fw-bold p-2">Home Screen</h4>
-        {
-          uid &&
           <div className="d-flex">
             <div className="p-2">
               <img className="ttr-width-50px rounded-circle"
@@ -66,9 +55,9 @@ const Home = () => {
               </div>
             </div>
           </div>
-        }
       </div>
-      <Tuits tuits={tuits} deleteTuit={deleteTuit} refreshTuits={findTuits}/>
+      <Tuits tuits={tuits}
+             refreshTuits={findTuits}/>
     </div>
   );
 };

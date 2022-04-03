@@ -7,16 +7,12 @@ const MyDislikes = () => {
     const [dislikedTuits, setDislikedTuits] = useState([]);
     const findTuitsIDislike = () =>
         service.findAllTuitsDislikedByUser("me")
-            .then(tuits => setDislikedTuits(tuits));
+            .then((tuits) => setDislikedTuits(tuits));
     useEffect(findTuitsIDislike, []);
 
     return (
         <div>
-            <h3>My Dislikes</h3>
-            <Link to="/profile" classname='nav-link active'>
-                Back to profile
-            </Link>
-            <br/>
+            <h2>My Dislikes</h2>
             <Tuits tuits={dislikedTuits} refreshTuits={findTuitsIDislike}/>
         </div>
     )

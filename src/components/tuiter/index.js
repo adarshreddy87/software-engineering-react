@@ -14,10 +14,6 @@ import Lists from "../lists";
 import More from "../more";
 import {Login} from "../profile/login";
 import Signup from "../profile/signup";
-import TuitScreen from "../tuits/tuit-screen";
-import MyTuits from "../profile/my-tuits";
-import MyLikes from "../profile/my-likes";
-import MyDislikes from "../profile/my-dislikes";
 
 function Tuiter () {
   return(
@@ -41,13 +37,10 @@ function Tuiter () {
               <Route path="/messages" element={<Messages/>}/>
               <Route path="/bookmarks" element={<Bookmarks/>}/>
               <Route path="/lists" element={<Lists/>}/>
-              <Route path="/profile" element={<Profile/>}/>
+              <Route path="/profile/*" element={<Profile/>}/>
               <Route path="/profile/edit" element={<EditProfile/>}/>
               <Route path="/more" element={<More/>}/>
-              <Route path="/tuit/:tid" element={<TuitScreen/>}/>
-              <Route path="/profile/mytuits" element={<MyTuits/>}/>
-              <Route path="/profile/mylikes" element={<MyLikes/>}/>
-              <Route path="/profile/mydislikes" element={<MyDislikes/>}/>
+
             </Routes>
           </div>
           <div className="ttr-right-column">
