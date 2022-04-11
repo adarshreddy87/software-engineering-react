@@ -11,7 +11,13 @@ const MyLikes = () => {
     
     return(
         <div>
-            <Tuits tuits={likedTuits} refreshTuits={findTuitsILike}/>
+            <h3>My Likes</h3>
+            <Link to="/profile" classname='nav-link active'>
+                Back to profile
+            </Link>
+            <br/>
+            <Tuits tuits={likedTuits}
+                   refreshTuits={findTuitsILike}/>
         </div>
     );
 };
