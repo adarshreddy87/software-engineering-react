@@ -3,6 +3,7 @@ import axios from "axios";
 //"http://localhost:4000";
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 const USERS_API = `${BASE_URL}/api/users`;
+const LOGIN_API = `${BASE_URL}/api/login`;
 
 export const createUser = (user) =>
   axios.post(`${USERS_API}`, user)
@@ -23,6 +24,10 @@ export const deleteUser = (uid) =>
 export const deleteUsersByUsername = (username) =>
   axios.get(`${USERS_API}/username/${username}/delete`)
     .then(response => response.data);
+
+export const findUserByCredentials = (credentials) =>
+    axios.post(`${LOGIN_API}`, credentials)
+        .then(response => response.data);
 
 const service = {
   findAllUsers
